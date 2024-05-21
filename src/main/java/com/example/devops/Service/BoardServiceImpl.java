@@ -26,7 +26,7 @@ public class BoardServiceImpl implements BoardService {
                .map(BoardResponse:: from)
                .toList();
     }
-//
+
     @Override
     public void deleteBoard(Long id) {
         boardRepository.deleteById(id);
