@@ -18,7 +18,7 @@ public class BoardServiceImpl implements BoardService {
     public void writePost(BoardRequest boardRequest) {
         boardRepository.save(boardRequest.toEntity());
     }
-
+//?
     @Override
     public List<BoardResponse> getAllBoard() {
        List<Board> boards = boardRepository.findAll();
@@ -29,6 +29,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public void deleteBoard(Long id) {
+        if(!boardRepository.existsById(id)) throw  new IllegalArgumentException("삭제 불가");
         boardRepository.deleteById(id);
     }
 
