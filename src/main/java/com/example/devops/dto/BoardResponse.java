@@ -11,9 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class BoardResponse {
+    Long id;
     String name;
     String text;
-    Long id;
+
     public static BoardResponse from(Board boards){
         return BoardResponse.builder()
                 .id(boards.getId())

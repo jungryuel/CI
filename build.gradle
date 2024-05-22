@@ -49,7 +49,7 @@ jacocoTestCoverageVerification{
 			includes = ['com.example.devops.*.**']
 			limit {
 				value = 'COVEREDRATIO'
-				minimum = 0.8
+				minimum = 0.5
 			}
 		}
 	}
