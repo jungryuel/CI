@@ -5,6 +5,7 @@ import com.example.devops.domain.Board;
 import com.example.devops.dto.BoardRequest;
 import com.example.devops.dto.BoardResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
