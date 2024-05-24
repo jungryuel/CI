@@ -1,0 +1,32 @@
+name: Deploy
+on:
+  push: 
+    branches: [ "main" ]
+    
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+#ssh username@ip 설정 파일
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        script: |
+          cd ci-server
+          git pull
+          sh gradlew bulid
+          nohup java -jar bulid/libs/*T.jar > /dev/null 2>&1 &
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+    
+    - name: chmod
+      run: chmod 744 gradlew
+      
+    - name: Build with Gradle Wrapper
+      run: ./gradlew build
